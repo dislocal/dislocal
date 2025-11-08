@@ -4,3 +4,28 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+axum                = { version = "0.8.6", features = [ "macros" ] }
+serde               = { version = "1.0.228" }
+serde_json          = { version = "1.0.145" }
+tera                = { version = "1.20.1"  }
+
+tokio       = { version = "1.48.0", features = [ "full", "tracing" ] }
+tower       = { version = "0.5.2",  features = [ "util" ] }
+tower-http  = { version = "0.6.6",  features = [ "fs", "trace" ] }
+sqlx        = { version = "0.8.6",  features = [ "runtime-tokio", "tls-rustls-ring-native-roots", "sqlite", "migrate", "macros" ] }
+derive_more = { version = "2.0.1",  features = [ "from", "display" ] }
+iroh        = { version = "0.95.1" }
+iroh-blobs  = { version = "0.97.0" }
+
+# Application observability
+tracing               = { version = "0.1.41", features = [ "attributes" ] }
+tracing-subscriber    = { version = "0.3.20", features = [ "std" , "fmt", "json" ] }
+tracing-log           = { version = "0.2.0"  }
+tracing-opentelemetry = { version = "0.32.0" }
+
+opentelemetry         = { version = "0.31.0" }
+opentelemetry_sdk     = { version = "0.31.0" }
+opentelemetry-http    = { version = "0.31.0" }
+opentelemetry-stdout  = { version = "0.31.0" }
+
+console-subscriber    = { version = "0.5.0"  }
