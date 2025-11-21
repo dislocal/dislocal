@@ -28,6 +28,9 @@ async fn main() -> Result<()> {
 
     let (_sender, receiver) = gossip.subscribe(topic_id, peer_ids).await?.split();
 
+    let schema = proto::schema();
+    println!("Schema: {:?}", schema);
+
     tokio::spawn(subscribe_loop(receiver));
 
     router.shutdown().await?;
