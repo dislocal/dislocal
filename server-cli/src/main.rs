@@ -4,6 +4,7 @@ use iroh_gossip::{
     Gossip, TopicId,
     api::{Event, GossipReceiver},
 };
+use proto::reader;
 use server_cli::{Result, instrument};
 use tracing::info;
 
@@ -28,8 +29,14 @@ async fn main() -> Result<()> {
 
     let (_sender, receiver) = gossip.subscribe(topic_id, peer_ids).await?.split();
 
-    let schema = proto::schema();
-    println!("Schema: {:?}", schema);
+    let hello = proto::Hello::new(
+        proto::Role::Server,
+        String::from(format!("{:?}", endpoint.id())),
+    );
+
+    let avro_hello = hello.write()?;
+
+    reader(avro_hello);
 
     tokio::spawn(subscribe_loop(receiver));
 

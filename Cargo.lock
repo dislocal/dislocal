@@ -3461,6 +3461,7 @@ name = "proto"
 version = "0.1.0"
 dependencies = [
  "apache-avro",
+ "derive_more 2.0.1",
  "serde",
 ]
 
