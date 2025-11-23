@@ -8,3 +8,5 @@ serde        = { version = "1.0.228", features = [ "derive" ] }
 apache-avro  = { version = "0.21.0" , features = [ "zstandard" ] }
 
 derive_more  = { version = "2.0.1",  features = [ "from", "display" ] }
+
+proto-macros = { path = "../proto-macros"}

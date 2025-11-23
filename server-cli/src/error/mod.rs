@@ -13,7 +13,4 @@ pub enum Error {
 
     #[from]
     Api(ApiError),
-
-    #[from]
-    Proto(proto::error::Error),
 }

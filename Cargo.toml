@@ -2,7 +2,7 @@
 resolver = "3"
 members = [
     "client-cli",
-    "proto",
+    "proto", "proto-macros",
     "server-cli",
 ]
 
