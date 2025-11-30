@@ -1,3 +1,8 @@
 [workspace]
 resolver = "3"
-members = ["client-cli","server-cli"]
+members = [
+    "client-cli",
+    "proto", "proto-macros",
+    "server-cli",
+]
+
