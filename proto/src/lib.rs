@@ -13,7 +13,7 @@ static HELLO_SCHEMA: &str = r#"
     "#;
 
 #[derive(Debug, Serialize, Avro)]
-#[avro_schema_constant(HELLO_SCHEMA)]
+#[avro_schema(HELLO_SCHEMA)]
 pub struct Hello {
     role: Role,
     node_id: String,
