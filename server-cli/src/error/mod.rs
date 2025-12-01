@@ -1,3 +1,5 @@
+use std::io;
+
 use derive_more::From;
 use iroh::endpoint;
 use iroh_gossip::api::ApiError;
@@ -13,4 +15,7 @@ pub enum Error {
 
     #[from]
     Api(ApiError),
+
+    #[from]
+    Io(io::Error),
 }

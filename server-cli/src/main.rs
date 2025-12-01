@@ -24,11 +24,14 @@ async fn main() -> Result<()> {
         .spawn();
 
     let topic_id = TopicId::from_bytes(rand::random());
+    info!("server: topic_id [{:?}]", topic_id);
     let peer_ids = vec![];
 
     let (_sender, receiver) = gossip.subscribe(topic_id, peer_ids).await?.split();
 
     tokio::spawn(subscribe_loop(receiver));
+
+    tokio::signal::ctrl_c().await?;
 
     router.shutdown().await?;
     info!("server: router shutdown");
