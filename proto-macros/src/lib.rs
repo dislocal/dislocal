@@ -30,15 +30,15 @@ pub fn derive_avro_write(item: TokenStream) -> TokenStream {
                 SCHEMA.get_or_init(|| ::apache_avro::Schema::parse_str(#schema_ident).unwrap())
             }
 
-            pub fn write(self) -> Vec<u8> {
+            pub fn write(self) -> ::apache_avro::AvroResult<Vec<u8>> {
                 let mut writer = ::apache_avro::Writer::with_codec(
                     Self::schema(),
                     ::std::vec::Vec::new(),
                     ::apache_avro::Codec::Zstandard(::apache_avro::ZstandardSettings::default()),
                 );
 
-                writer.append_ser(self).unwrap();
-                writer.into_inner().unwrap()
+                writer.append_ser(self)?;
+                Ok(writer.into_inner()?)
             }
         }
     };
